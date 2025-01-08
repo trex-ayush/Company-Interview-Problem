@@ -1,5 +1,5 @@
 /*
-    Problem Name: Count all triplets with given sum in sorted array
+    Problem Name: 1930. Unique Length-3 Palindromic Subsequences
     https://leetcode.com/problems/unique-length-3-palindromic-subsequences/
     Company : Google - 3, Adobe - 3, Meta - 2, Amazon - 2, Apple - 2, Uber -2
 */

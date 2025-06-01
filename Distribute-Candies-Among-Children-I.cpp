@@ -1,6 +1,8 @@
 // Company Tags: Rubrik
 class Solution {
 public:
+    // T.C : O(n^2)
+    // S.c : O(1)
     long long distributeCandies(int n, int limit) {
         long long count = 0;
 

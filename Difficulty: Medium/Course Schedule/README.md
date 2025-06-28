@@ -1,0 +1,13 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/course-schedule/1?page=2&difficulty%5B%5D=1&category%5B%5D=Graph&sortBy=submissions">Course Schedule</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">There are a total of <strong>n</strong> tasks you have to pick, labelled from <strong>0 to n-1</strong>. Some tasks may have <strong>prerequisites[][] </strong>tasks, for example to pick task <strong>0</strong> you have to first finish tasks <strong>1</strong>, which is expressed as a pair: <strong>[0, 1]</strong><br>Given the total number of <strong>n</strong> tasks and a list of prerequisite pairs of size <strong>m</strong>. Find a ordering of tasks you should pick to finish all tasks.</span><br><span style="font-size: 18px;"><strong>Note: </strong>There may be multiple correct orders, you just need to return any one of them. If it is impossible to finish all tasks, return an empty array. </span><span style="font-size: 18px;">Returning any correct order will give the output as <strong>true</strong></span><span style="font-size: 18px;">, whereas any invalid order will give the output <strong>false</strong></span><span style="font-size: 18px;">.&nbsp;</span></p>
+<p><span style="font-size: 18px;"><strong>Examples:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>n = 2, prerequisites[][] = [[1, 0]]
+<strong>Output: </strong>true<strong>
+Explanation: </strong></span><span style="font-size: 18px;">Only possible order is [0, 1].</span></pre>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>n = 4, prerequisites[][] = [[1, 0], [2, 0], [3, 1], [3, 2]]
+<strong>Output: </strong>true<strong>
+Explanation: </strong>There are a total of 4 tasks to pick. To pick task 3 you should have finished both tasks 1 and 2. Both tasks 1 and 2 should be pick after you finished task 0. So one correct task order is [0, 1, 2, 3]. Another correct ordering is [0, 2, 1, 3]. Returning any of these order will result in an output of true.</span>
+</pre>
+<div><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ n ≤ 10<sup>5</sup></span>
+<div><span style="font-size: 18px;">0 ≤ prerequisites[i][0], prerequisites[i][1] &lt; n<br>All prerequisite pairs are unique</span></div>
+<div><span style="font-size: 18px;">prerequisites[i][0] ≠ prerequisites[i][1]</span></div>
+</div></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>Google</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>DFS</code>&nbsp;<code>Graph</code>&nbsp;<code>BFS</code>&nbsp;<code>Data Structures</code>&nbsp;<code>Algorithms</code>&nbsp;

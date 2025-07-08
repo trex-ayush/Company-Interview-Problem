@@ -1,7 +1,24 @@
 class Solution {
 public:
-    // Time Complexity : O(n * 2^n + nlogn)
+    // Time Complexity : O(nlogn * 2^n + nlogn) = O(nlogn * 2^n)
     // Space Complexity: O(n * k)
+    int bs(vector<vector<int>>& events, int idx){
+        int n = events.size();
+        int result = n;
+        int st = idx + 1;
+        int en = n - 1;
+
+        while(st <= en){
+            int mid = st + (en - st)/2;
+
+            if(events[mid][0] > events[idx][1]){
+                result = mid;
+                en = mid - 1;
+            }else st = mid + 1;
+        }
+
+        return result;
+    }
     int solve(vector<vector<int>>& events, int idx, int k, vector<vector<int>>& t){
         int n = events.size();
         if(idx >= n || k == 0) return 0;
@@ -10,10 +27,7 @@ public:
 
         int skip = solve(events, idx + 1, k, t);
         int take = events[idx][2];
-        int j;
-        for(j = idx + 1; j < n; j++){ // O(n)
-            if(events[j][0] > events[idx][1]) break;
-        }
+        int j = bs(events, idx);  // O(log n)
         take += solve(events, j, k - 1, t);
 
         return t[idx][k] = max(take, skip);

@@ -1,36 +1,27 @@
 class Solution {
   public:
     vector<int> asciirange(string& s) {
-        int n = s.length();
+        int n = s.size();
+        vector<int> first(26, -1), last(26, -1);
         
-        unordered_map<char,pair<int,int>> mpp;
-        
-        for(int i = 0; i < n; i++){
-            char ch = s[i];
-            if(mpp.find(ch) != mpp.end()){
-                mpp[ch].second = i;
-            }else{
-                mpp[ch] = {i,i};
-            }
-        }
-        
-        vector<int> prefixSum(n, 0);
-        prefixSum[0] = s[0];
-        for(int i = 1; i < n; i++){
-            prefixSum[i] = prefixSum[i-1]+s[i];
+        for (int i = 0; i < n; i++) {
+            int c = s[i] - 'a';
+            if (first[c] == -1) first[c] = i;
+            last[c] = i;
         }
         
         vector<int> result;
-        unordered_set<char> seen;
-        
-        for(int i = 0; i < n; i++){
-            char ch = s[i];
-            if(!seen.count(ch) && mpp[ch].first != mpp[ch].second){
-                int totalSum = prefixSum[mpp[ch].second-1] - prefixSum[mpp[ch].first];
-                if(totalSum) result.push_back(totalSum);
-                seen.insert(ch);
+        for (int c = 0; c < 26; c++) {
+            if (first[c] != -1 && last[c] - first[c] > 1) {
+                int sum_ascii = 0;
+                for (int i = first[c] + 1; i < last[c]; i++) {
+                    sum_ascii += s[i];
+                }
+                if (sum_ascii > 0) result.push_back(sum_ascii);
             }
         }
+        
         return result;
     }
+
 };

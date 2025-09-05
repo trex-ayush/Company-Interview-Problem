@@ -1,0 +1,9 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/reverse-a-stack/1">Reverse a Stack</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">You are given a stack <strong>St</strong>. You have to reverse the stack using recursion.</span></p>
+<p><strong><span style="font-size: 18px;">Example 1:</span></strong></p>
+<pre><strong><span style="font-size: 18px;">Input:</span> </strong><span style="font-size: 18px;">St = [3,2,1,7,6]</span>
+<strong><span style="font-size: 18px;">Output:</span> </strong><span style="font-size: 18px;">[6,7,1,2,3]<br><strong>Explanation: </strong>Input stack after reversing will look like the stack in the output.</span></pre>
+<p><strong><span style="font-size: 18px;">Example 2:</span></strong></p>
+<pre><strong><span style="font-size: 18px;">Input:</span> </strong><span style="font-size: 18px;">St = [4,3,9,6]</span>
+<strong><span style="font-size: 18px;">Output:</span> </strong><span style="font-size: 18px;">[6,9,3,4]<br><strong style="font-family: sans-serif;">Explanation: </strong>Input stack after reversing will look like the stack in the output.</span>
+</pre>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ stack.size ≤ 10<sup>4</sup></span><br><span style="font-size: 18px;">0</span><span style="font-size: 18px;">&nbsp;≤ stack.element ≤ 10<sup>3</sup></span></p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Recursion</code>&nbsp;<code>Stack</code>&nbsp;<code>Data Structures</code>&nbsp;<code>Algorithms</code>&nbsp;

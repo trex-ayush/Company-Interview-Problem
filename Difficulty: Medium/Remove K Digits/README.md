@@ -1,0 +1,9 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/remove-k-digits/1">Remove K Digits</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a non-negative integer <strong>s</strong> represented as a string, remove<strong> k</strong>&nbsp;digits from the number so that the new number is the smallest possible.<br><strong>Note :&nbsp;</strong>The given&nbsp;<em>number </em>does not contain any leading zero.</span></p>
+<p><span style="font-size: 18px;"><strong>Examples:</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input:</strong> s<strong> = </strong>"149811",<strong> </strong>k = 3
+<strong>Output:</strong> 111
+<strong>Explanation</strong>: Remove the three digits 4, 9, and 8 to form the new number 111 which is smallest.<br></span>
+</pre>
+<pre><span style="font-size: 18px;"><span style="font-size: 14pt;"><strong>Input</strong>: s = "1002991", k = 3 <br></span></span><span style="font-size: 18px;"><span style="font-size: 14pt;"><strong>Output:</strong> 21
+<strong><span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Explanation</span></strong>: Remove the three digits 1(leading one), 9, and 9 to form the new number 21(Note that the output must not contain </span>leading zeroes) which is the smallest.</span></pre>
+<p><span style="font-size: 18px;"><strong>Constraints:</strong><br>1 ≤ k </span><span style="font-size: 18px;">≤ </span><span style="font-size: 18px;">|s| ≤ 10</span><sup>6</sup></p></div><p><span style=font-size:18px><strong>Company Tags : </strong><br><code>Microsoft</code>&nbsp;<br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Stack</code>&nbsp;<code>Data Structures</code>&nbsp;

@@ -4,18 +4,21 @@ class Solution {
         stack<int> st;
         
         for(auto& a : arr){
+            bool isDestroyed  = false;
             while(!st.empty() && a < 0 && st.top() > 0){
                 int sum = st.top() + a;
                 if(sum < 0){
                     st.pop();
                 }else if(sum > 0){
-                    a = 0;
+                    isDestroyed = true;
+                    break;
                 }else{
-                    a = 0;
+                    isDestroyed = true;
                     st.pop();
+                    break;
                 }
             }
-            if(a != 0) st.push(a);
+            if(isDestroyed == false) st.push(a);
         }
         
         int s = st.size();

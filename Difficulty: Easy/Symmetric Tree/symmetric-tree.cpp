@@ -12,33 +12,17 @@ public:
 */
 class Solution {
   public:
+    bool solve(Node* p, Node* q){
+        if(!p && !q) return true;
+        if(!p || !q) return false;
+        if(p->data != q->data) return false;
+        return solve(p->left, q->right) && solve(p->right, q->left);
+    }
     bool isSymmetric(Node* root) {
-        if (!root) return true;
+        if(!root) return true;
+        if(!root->left && !root->right) return true;
+        if(!root->left || !root->right) return false;
         
-        queue<Node*> leftTree;
-        queue<Node*> rightTree;
-        
-        leftTree.push(root->left);
-        rightTree.push(root->right);
-        
-        while (!leftTree.empty() && !rightTree.empty()) {
-            Node* leftNode  = leftTree.front();
-            Node* rightNode = rightTree.front();
-            leftTree.pop();
-            rightTree.pop();
-            
-            if (leftNode == NULL && rightNode == NULL) continue;
-            
-            if (leftNode == NULL || rightNode == NULL) return false;
-            
-            if (leftNode->data != rightNode->data) return false;
-            
-            leftTree.push(leftNode->left);
-            leftTree.push(leftNode->right);
-            rightTree.push(rightNode->right);
-            rightTree.push(rightNode->left);
-        }
-        
-        return true;
+        return solve(root->left, root->right);
     }
 };

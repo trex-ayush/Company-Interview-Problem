@@ -6,7 +6,7 @@ public:
 
     int floorDiv(int a, int b) {
         int q = a / b;
-        if ((a ^ b) < 0 && a % b != 0) q--;
+        if ((a * b) < 0 && a % b != 0) q--;
         return q;
     }
 
@@ -17,6 +17,7 @@ public:
             if (isOperator(token)) {
                 int b = st.top(); st.pop();
                 int a = st.top(); st.pop();
+                
                 if (token == "+") st.push(a + b);
                 else if (token == "-") st.push(a - b);
                 else if (token == "*") st.push(a * b);
@@ -26,7 +27,6 @@ public:
                 st.push(stoi(token));
             }
         }
-
         return st.top();
     }
 };

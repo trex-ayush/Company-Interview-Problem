@@ -1,0 +1,9 @@
+<h2><a href="https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1">Shortest Path in Undirected Graph</a></h2><h3>Difficulty Level : Difficulty: Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">You are given an adjacency list, <strong>adj&nbsp;</strong>of <strong>Undirected Graph</strong> having <strong>unit weight </strong>of the edges, find the shortest path<strong> </strong>from<strong> src </strong>to all the vertex and if it is <strong>unreachable</strong> to reach any vertex, then return<strong> -1</strong> for that vertex.</span></p>
+<p><span style="font-size: 18px;"><strong>Examples :</strong></span></p>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>adj[][] = [[1, 3], [0, 2], [1, 6], [0, 4], [3, 5], [4, 6], [2, 5, 7, 8], [6, 8], [7, 6]], src=0
+<strong>Output: </strong>[0, 1, 2, 1, 2, 3, 3, 4, 4]<br></span><img src="https://media.geeksforgeeks.org/img-practice/prod/addEditProblem/711976/Web/Other/blobid0_1745302423.jpg" width="249" height="220"></pre>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>adj[][]= [[3], [3], [], [0, 1]], src=3
+<strong>Output: </strong>[1, 1, -1, 0]<br><img src="https://media.geeksforgeeks.org/img-practice/prod/addEditProblem/711976/Web/Other/blobid0_1747111194.webp" width="207" height="195"><br></span></pre>
+<pre><span style="font-size: 18px;"><strong>Input: </strong>adj[][]= [[], [], [], [4], [3], [], []], src=1
+<strong>Output: </strong>[-1, 0, -1, -1, -1, -1, -1] </span></pre>
+<p><span style="font-size: 18px;"><strong>Constraint:</strong><br>1&lt;=adj.size()&lt;=10<sup>4</sup><br>0&lt;=edges&lt;=</span><span style="font-size: 18px;">adj.size()</span><span style="font-size: 18px;">-1</span></p></div><br><p><span style=font-size:18px><strong>Topic Tags : </strong><br><code>Graph</code>&nbsp;<code>BFS</code>&nbsp;<code>Algorithms</code>&nbsp;

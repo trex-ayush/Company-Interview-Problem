@@ -1,32 +1,26 @@
 class Solution {
   public:
-    int solve(int day, int lastTask, vector<vector<int>>& arr, vector<vector<int>>& dp) {
-        if (day == 0) {
-            int maxi = 0;
-            for (int task = 0; task < 3; task++) {
-                if (task != lastTask) {
-                    maxi = max(maxi, arr[0][task]);
-                }
-            }
-            return maxi;
-        }
-        
-        if (dp[day][lastTask] != -1) return dp[day][lastTask];
-        
-        int maxi = 0;
-        for (int task = 0; task < 3; task++) {
-            if (task != lastTask) {
-                int point = arr[day][task] + solve(day - 1, task, arr, dp);
-                maxi = max(maxi, point);
-            }
-        }
-        
-        return dp[day][lastTask] = maxi;
-    }
-
     int maximumPoints(vector<vector<int>>& arr) {
         int n = arr.size();
-        vector<vector<int>> dp(n, vector<int>(4, -1));
-        return solve(n - 1, 3, arr, dp);
+        vector<vector<int>> t(n, vector<int>(4, 0));
+        
+        // day 0
+        t[0][0] = max(arr[0][1], arr[0][2]);
+        t[0][1] = max(arr[0][0], arr[0][2]);
+        t[0][2] = max(arr[0][0], arr[0][1]);
+        t[0][3] = max({arr[0][0], arr[0][1], arr[0][2]});
+        
+        for(int day = 1; day < n; day++){
+            for (int lastTask = 0; lastTask < 4; lastTask++) {
+                t[day][lastTask] = 0;
+                for(int task = 0; task < 3; task++){
+                    if(task != lastTask){
+                        int point = arr[day][task] + t[day-1][task];
+                        t[day][lastTask] = max(t[day][lastTask], point);
+                    }
+                }
+            }
+        }
+        return t[n - 1][3];
     }
 };

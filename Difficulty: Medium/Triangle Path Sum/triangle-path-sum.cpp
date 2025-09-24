@@ -1,19 +1,19 @@
 class Solution {
-  public:
-    int solve(vector<vector<int>>& triangle, int idx, int level, vector<vector<int>>& t){
-        int n = triangle.size();
-        if(level == n - 1) return triangle[level][idx];
-        
-        if(t[level][idx] != -1) return t[level][idx];
-        
-        int down = solve(triangle, idx, level + 1, t);
-        int downRight = solve(triangle, idx + 1, level + 1, t);
-        
-        return t[level][idx] = triangle[level][idx] + min(down, downRight);
-    }
+public:
     int minPathSum(vector<vector<int>>& triangle) {
         int n = triangle.size();
-        vector<vector<int>> t(n, vector<int>(triangle.back().size(), -1));
-        return solve(triangle, 0, 0, t);
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        
+        for (int col = 0; col < triangle[n - 1].size(); col++) {
+            dp[n - 1][col] = triangle[n - 1][col];
+        }
+        
+        for (int row = n - 2; row >= 0; row--) {
+            for (int col = 0; col < triangle[row].size(); col++) {
+                dp[row][col] = triangle[row][col] + min(dp[row + 1][col], dp[row + 1][col + 1]);
+            }
+        }
+        
+        return dp[0][0];
     }
 };

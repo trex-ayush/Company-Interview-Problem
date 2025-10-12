@@ -1,26 +1,23 @@
 class Solution {
   public:
-    int solve(vector<int>& arr, int idx, bool canBuy, vector<vector<int>>& t) {
-        if (idx >= arr.size()) return 0;
-        if (t[idx][canBuy] != -1) return t[idx][canBuy];
-        
-        int profit = 0;
-        if (canBuy) {
-            int buy = -arr[idx] + solve(arr, idx + 1, false, t);
-            int skip = solve(arr, idx + 1, true, t);
-            profit = max(buy, skip);
-        } else {
-            int sell = arr[idx] + solve(arr, idx + 1, true, t);
-            int skip = solve(arr, idx + 1, false, t);
-            profit = max(sell, skip);
-        }
-        
-        return t[idx][canBuy] = profit;
-    }
-
     int stockBuySell(vector<int>& arr) {
         int n = arr.size();
-        vector<vector<int>> t(n, vector<int>(2, -1));
-        return solve(arr, 0, true, t);
+        vector<vector<int>> dp(n + 1, vector<int>(2, 0));
+        
+        for (int idx = n - 1; idx >= 0; idx--) {
+            for (int canBuy = 0; canBuy <= 1; canBuy++) {
+                if (canBuy) {
+                    int buy = -arr[idx] + dp[idx + 1][0];
+                    int skip = dp[idx + 1][1];
+                    dp[idx][canBuy] = max(buy, skip);
+                } else {
+                    int sell = arr[idx] + dp[idx + 1][1];
+                    int skip = dp[idx + 1][0];
+                    dp[idx][canBuy] = max(sell, skip);
+                }
+            }
+        }
+        
+        return dp[0][1];
     }
 };

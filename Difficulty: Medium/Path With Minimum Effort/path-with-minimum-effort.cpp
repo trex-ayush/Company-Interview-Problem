@@ -1,40 +1,50 @@
-
 class Solution {
   public:
-    typedef pair<int, pair<int, int>> P; //{u {v, wt}}
-    vector<vector<int>> dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
-    int MinimumEffort(int rows, int columns, vector<vector<int>> &heights) {
-        int n = rows;
-        int m = columns;
-        priority_queue<P, vector<P>, greater<P>> pq;
-        vector<vector<int>> ans(n, vector<int>(m, INT_MAX));
+    int minCostPath(vector<vector<int>>& mat) {
+        int n = mat.size();
+        int m = mat[0].size();
         
+        vector<vector<int>> dist(n, vector<int>(m, INT_MAX));
+        priority_queue<
+            pair<int, pair<int,int>>,
+            vector<pair<int, pair<int,int>>>,
+            greater<pair<int, pair<int,int>>>
+        > pq;
+        
+        dist[0][0] = 0;
         pq.push({0, {0, 0}});
-        ans[0][0] = 0;
+        
+        int dirs[4][2] = {{1,0},{-1,0},{0,1},{0,-1}};
         
         while (!pq.empty()) {
-            int diff = pq.top().first;
-            int i = pq.top().second.first;
-            int j = pq.top().second.second;
+            auto [cost, pos] = pq.top();
             pq.pop();
             
-            for (auto& dir : dirs) {
-                int i_ = i + dir[0];
-                int j_ = j + dir[1];
+            int x = pos.first;
+            int y = pos.second;
+            
+            if (x == n - 1 && y == m - 1)
+                return cost;  // minimal cost found
                 
-                if (i_ >= 0 && i_ < n && j_ >= 0 && j_ < m) {
-                    int absDiff = abs(heights[i_][j_] - heights[i][j]);
-                    int maxDiff = max(absDiff, diff);
+            if (cost > dist[x][y])
+                continue;
+                
+            for (auto& d : dirs) {
+                int nx = x + d[0];
+                int ny = y + d[1];
+                
+                if (nx >= 0 && ny >= 0 && nx < n && ny < m) {
+                    int edge = abs(mat[nx][ny] - mat[x][y]);
+                    int newCost = max(cost, edge);
                     
-                    if (ans[i_][j_] > maxDiff) {
-                        ans[i_][j_] = maxDiff;
-                        pq.push({maxDiff, {i_, j_}});
+                    if (newCost < dist[nx][ny]) {
+                        dist[nx][ny] = newCost;
+                        pq.push({newCost, {nx, ny}});
                     }
                 }
             }
         }
         
-        return ans[n - 1][m - 1];
-        
+        return -1;
     }
 };

@@ -23,7 +23,8 @@ class Solution {
         }
     }
 
-    int maxRemove(vector<vector<int>>& stones, int n) {
+    int maxRemove(vector<vector<int>>& stones) {
+        int n = stones.size();
         parent.resize(n);
         rank.resize(n);
         

@@ -1,49 +1,43 @@
 /*
-class Node {
-  public:
-    int data;
-    Node *next;
-
-    Node(int x) {
-       data = x;
-       next = NULL;
-    }
+struct Node {
+  int data;
+  struct Node *next;
+  Node(int x) {
+    data = x;
+    next = NULL;
+  }
 };
 */
 
 class Solution {
   public:
-    Node *reverse(Node *head){
-        Node *curr = head;
-        Node *prev = NULL;
+    // Function to check whether the list is palindrome.
+    string traversal(Node *head){
+        Node* temp = head;
         
-        while(curr){
-            Node* forw = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = forw;
-        }
-        return prev;
-    }
-    bool isPalindrome(Node *head) {
-        if (!head || !head->next) return true;
-        
-        Node *slow = head;
-        Node *fast = head;
-        
-        while(fast && fast->next){
-            slow = slow->next;
-            fast = fast->next->next;
-        }
-        
-        Node *rev = reverse(slow);
-        
-        Node *temp = head;
-        while(rev){
-            if(temp->data != rev->data) return false;
+        string ans = "";
+        while(temp){
+            ans += temp->data;
             temp = temp->next;
-            rev = rev->next;
         }
+        
+        return ans;
+    }
+    bool check(string &ans){
+        int s = 0;
+        int e = ans.length() - 1;
+        
+        while(s <= e){
+            if(ans[s++] != ans[e--]) return false;
+        }
+        
         return true;
     }
+    bool isPalindrome(Node *head) {
+        // Your code here
+        string ans = traversal(head);
+        
+        return check(ans);
+    }
 };
+
